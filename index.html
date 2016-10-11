@@ -1,0 +1,83 @@
+<html>
+
+<head>
+    <title>Wiredcraft Balls</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="style.css" rel="stylesheet" type="text/css">
+    <link href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href="bootstrap.css" rel="stylesheet" type="text/css">
+</head>
+
+<body>
+    <div class="cover">
+        <div class="cover-image"></div>
+        <div class="container">
+            <button id="go" data-text-start="Push SPACE key to start" data-text-stop="Push SPACE key to stop" data-action="start"></button>
+            <div id="container">
+                <ul id="balls">
+                    <canvas id="gameCanvas"></canvas>
+                    <div id="form" class="row">
+                        <br>
+                        <br>
+                        <div class="col-md-12 text-center">
+                            <a href="https://wiredcraft.com/"><img class="center-block" src="https://wiredcraft.com/assets/logo.svg" width="700px"></a>
+                            <br>
+                            <p>Lottery for all people in Wiredcraft meetup! Find out who's the most standing out!</p>
+                            <br>
+                            <br>
+                            <div class="col-md-offset-3 col-md-6 input-group">
+                                <input type="number" type="text" onkeypress="return event.charCode >= 48 && event.charCode <= 57" class="form-control" id="amount" placeholder="Enter AMOUNT of people, it would be better <=500">
+                                <span class="input-group-btn">
+                                    <button class="btn btn-danger" onclick="setNum()">Go</button>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </ul>
+                <ul id="lucky-balls">
+                </ul>
+            </div>
+        </div>
+    </div>
+    <footer class="section section-danger">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-6">
+                    <p>Made by
+                        <a href="https://github.com/CCharlieLi"> Charlie Li</a> with ❤️.</p>
+                </div>
+                <div class="col-sm-6">
+                    <div class="row">
+                        <div class="col-md-12 hidden-lg hidden-md hidden-sm text-left">
+                            <a href="https://github.com/CCharlieLi/lucky"><i class="fa fa-3x fa-fw fa-github text-inverse"></i></a>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12 hidden-xs text-right">
+                            <a href="https://github.com/CCharlieLi/lucky"><i class="fa fa-3x fa-fw fa-github text-inverse"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <script>
+        const canvasBlock = document.getElementById('gameCanvas');
+        const formBlock = document.getElementById('form');
+        canvasBlock.style.display = 'none';
+        function setNum() {
+            var num = document.getElementById('amount').value
+            var data = Array.apply(null, {
+                length: num
+            }).map(Number.call, Number)
+            // Clear
+            formBlock.style.display = 'none';
+            canvasBlock.style.display = 'block';
+            document.getElementById('lucky-balls').innerHTML = "";
+        }
+    </script>
+    <script type="text/javascript" src="balls.js"></script>
+</body>
+
+</html>
